@@ -34,7 +34,7 @@ const NavBar = () => {
             <Image src="/setting.png" alt='question' width={24} height={24} />
             </button>
             <img className="h-8 w-8 rounded-full" src="/profile.png" alt="User" />
-            <Image src="/dropdown.png" alt='question' width={24} height={24} />
+            <Image src="/dropdown.png" alt='question' width={24} height={24}  className='w-[24px] h-[24px]' />
           </div>
         </div>
       </div>
