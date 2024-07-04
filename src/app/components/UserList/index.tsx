@@ -95,7 +95,7 @@ const UserList: React.FC<UserListProps> = ({ users, onEditUser, handleShowDelete
                         <FilterButton />
                     </div>
                     <button className="bg-blue-500 text-white px-4 py-2 rounded-lg flex gap-2 items-center" onClick={handleNewUserButtonClick}>
-                        <Image src='/add.png' alt='add icon' width={14} height={14} /> <span>New User</span>
+                        <Image src='/add.svg' alt='add icon' width={24} height={24} /> <span>New User</span>
                     </button>
                 </div>
                 <table className="min-w-full divide-y divide-gray-200">

@@ -3,6 +3,7 @@
 import { FC } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 interface SidebarItem {
   name: string;
@@ -34,7 +35,7 @@ const Sidebar: FC = () => {
                 <li key={item.name}>
                   <Link href={item.href}>
                     <span className={`flex items-center p-2 rounded-lg ${
-                      pathname === item.href ? 'bg-blue-100 text-blue-600' : 'text-gray-600'
+                      pathname === item.href ? 'bg-blue-100 text-blue-600' : 'text-[#94A3B8]'
                     } hover:bg-blue-50`}>
                       <span className="mr-3">{item.icon}</span>
                       {item.name}
@@ -47,9 +48,9 @@ const Sidebar: FC = () => {
         </div>
         <div className="mt-8 mb-10">
           <Link href="/dashboard">
-            <span className="flex items-center p-2 rounded-lg text-gray-600 hover:bg-blue-50">
-              <i className="fas fa-arrow-left mr-3"></i>
-              Back to Dashboard
+            <span className="flex items-center p-2  text-gray-600 hover:bg-blue-50  rounded border-[#344054] border">
+              <Image src='/signOut.svg' width={20} height={20} alt='sign out icon' />
+              <span className='text-[#344054]'>Back to Dashboard</span>
             </span>
           </Link>
         </div>
