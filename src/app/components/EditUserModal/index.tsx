@@ -14,7 +14,6 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ user, onUpdateUser, onCan
         roleColor: user.roleColor,
         id: user.id,
     });
-    
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = event.target;
@@ -22,7 +21,6 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ user, onUpdateUser, onCan
     };
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        console.log(editedUser)
         event.preventDefault();
         onUpdateUser(editedUser);
     };
@@ -74,7 +72,6 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ user, onUpdateUser, onCan
                             <option value="guest">Guest</option>
                         </select>
                     </div>
-                    
                     <div className="flex justify-end">
                         <button
                             type="submit"

@@ -20,7 +20,6 @@ interface UserListProps {
     handleShowDelete: (user: User) => void;
 }
 
-
 const UserList: React.FC<UserListProps> = ({ users, onEditUser, handleShowDelete, handleNewUserButtonClick }: any) => {
     const [showEditModal, setShowEditModal] = useState(false);
     const [editingUser, setEditingUser] = useState<User | null>(null);
@@ -35,7 +34,13 @@ const UserList: React.FC<UserListProps> = ({ users, onEditUser, handleShowDelete
             const response = await axios.put(`https://cac5595b20d3087e583a.free.beeceptor.com/api/users/${updatedUser.id}`, updatedUser);
 
             if (response.status === 200) {
-                onEditUser(updatedUser);
+                // Fetch the updated user data
+                const getResponse = await axios.get(`https://cac5595b20d3087e583a.free.beeceptor.com/api/users/${updatedUser.id}`);
+                if (getResponse.status === 200) {
+                    onEditUser(getResponse.data); // Update the state with the fetched user data
+                } else {
+                    console.error('Failed to fetch updated user data');
+                }
                 setShowEditModal(false);
             } else {
                 console.error('Failed to update user');
@@ -44,7 +49,7 @@ const UserList: React.FC<UserListProps> = ({ users, onEditUser, handleShowDelete
             console.error('Error updating user:', error);
         }
     };
-  
+
     const handleCancelEdit = () => {
         setEditingUser(null);
         setShowEditModal(false);
@@ -58,7 +63,6 @@ const UserList: React.FC<UserListProps> = ({ users, onEditUser, handleShowDelete
             <div className='flex gap-4'>
                 <button className='text-[#0D6EFD] text-sm border-b-[#0D6EFD] border-b-2 relative top-5'>Users</button>
                 <button className='text-[#98A2B3] text-sm  relative top-5'>Role</button>
-
             </div>
             <div className="min-w-full bg-white border rounded-lg shadow-sm mt-10">
                 <div className="flex justify-between items-center p-4">
@@ -118,7 +122,6 @@ const UserList: React.FC<UserListProps> = ({ users, onEditUser, handleShowDelete
                                     <button onClick={() => handleShowDelete(user)}>
                                         <span className="text-red-600 hover:text-red-900">Delete</span>
                                     </button>
-
                                 </td>
                             </tr>
                         ))}
