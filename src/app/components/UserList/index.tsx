@@ -21,7 +21,7 @@ interface UserListProps {
 }
 
 
-const UserList: React.FC<UserListProps> = ({ users, onEditUser, onRemoveUser, handleShowDelete, handleNewUserButtonClick }: any) => {
+const UserList: React.FC<UserListProps> = ({ users, onEditUser, handleShowDelete, handleNewUserButtonClick }: any) => {
     const [showEditModal, setShowEditModal] = useState(false);
     const [editingUser, setEditingUser] = useState<User | null>(null);
 
@@ -32,7 +32,7 @@ const UserList: React.FC<UserListProps> = ({ users, onEditUser, onRemoveUser, ha
 
     const handleUpdateUser = async (updatedUser: User) => {
         try {
-            const response = await axios.put(`https://ca50b917d87adfbe2d91.free.beeceptor.com/api/users/${updatedUser.id}`, updatedUser);
+            const response = await axios.put(`https://cac5595b20d3087e583a.free.beeceptor.com/api/users/${updatedUser.id}`, updatedUser);
 
             if (response.status === 200) {
                 onEditUser(updatedUser);
@@ -44,17 +44,23 @@ const UserList: React.FC<UserListProps> = ({ users, onEditUser, onRemoveUser, ha
             console.error('Error updating user:', error);
         }
     };
-
+  
     const handleCancelEdit = () => {
         setEditingUser(null);
         setShowEditModal(false);
     };
 
     return (
-        <div className="overflow-x-auto ml-250 absolute w-[70%] left-[350px] top-[130px]">
-            <h1>Users & Roles</h1>
-            <p>Manage all users in your business</p>
-            <div className="min-w-full bg-white border rounded-lg shadow-sm">
+        <div className="overflow-x-auto absolute w-[70%] left-[350px] top-[100px]">
+            <p className='text-[#98A2B3] text-sm relative'>Settings / Users & Roles Setting</p>
+            <h1 className='my-2 relative top-3'>Users & Roles</h1>
+            <p className='mt-4 text-[#98A2B3] text-sm'>Manage all users in your business</p>
+            <div className='flex gap-4'>
+                <button className='text-[#0D6EFD] text-sm border-b-[#0D6EFD] border-b-2 relative top-5'>Users</button>
+                <button className='text-[#98A2B3] text-sm  relative top-5'>Role</button>
+
+            </div>
+            <div className="min-w-full bg-white border rounded-lg shadow-sm mt-10">
                 <div className="flex justify-between items-center p-4">
                     <div className="relative flex gap-4">
                         <div className=''>

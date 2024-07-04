@@ -20,7 +20,7 @@ const NewUserForm: React.FC<NewUserFormProps> = ({ onAddUser }: any) => {
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         try {
-            const response = await fetch('https://ca50b917d87adfbe2d91.free.beeceptor.com/api/users/', {
+            const response = await fetch('https://cac5595b20d3087e583a.free.beeceptor.com/api/users/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

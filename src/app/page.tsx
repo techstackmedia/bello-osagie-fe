@@ -8,10 +8,8 @@ export default function Home() {
   const [showNewUserForm, setShowNewUserForm] = useState(false);
   const [userToDelete, setUserToDelete] = useState<any>(null);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
-  
-  const [users, setUsers] = useState<any>([
-    { name: 'Taiwo Isaac', email: 'taiwoisaac@email.com', role: 'Administrator', roleColor: 'bg-blue-100 text-blue-600' },
-  ]);
+
+  const [users, setUsers] = useState<any>([]);
 
   const handleNewUserButtonClick = () => {
     setShowNewUserForm(true);

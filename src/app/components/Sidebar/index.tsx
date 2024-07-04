@@ -24,8 +24,8 @@ const Sidebar: FC = () => {
   const pathname = usePathname();
 
   return (
-    <aside className="fixed left-0 w-64 h-screen p-4 border-r-2 bg-white mt-5">
-      <div className="flex flex-col h-full justify-between">
+    <aside className="fixed left-0 w-64 h-screen p-4 ml-5 border-2 bg-white mt-[6rem] rounded">
+      <div className="flex flex-col h-[90%] justify-between">
         <div>
           <h2 className="text-lg font-semibold mb-4">Settings</h2>
           <nav>
