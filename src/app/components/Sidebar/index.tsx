@@ -45,7 +45,7 @@ const Sidebar: FC = () => {
             </ul>
           </nav>
         </div>
-        <div className="mt-8">
+        <div className="mt-8 mb-10">
           <Link href="/dashboard">
             <span className="flex items-center p-2 rounded-lg text-gray-600 hover:bg-blue-50">
               <i className="fas fa-arrow-left mr-3"></i>
