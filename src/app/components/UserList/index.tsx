@@ -34,10 +34,9 @@ const UserList: React.FC<UserListProps> = ({ users, onEditUser, handleShowDelete
             const response = await axios.put(`https://cac5595b20d3087e583a.free.beeceptor.com/api/users/${updatedUser.id}`, updatedUser);
 
             if (response.status === 200) {
-                // Fetch the updated user data
                 const getResponse = await axios.get(`https://cac5595b20d3087e583a.free.beeceptor.com/api/users/${updatedUser.id}`);
                 if (getResponse.status === 200) {
-                    onEditUser(getResponse.data); // Update the state with the fetched user data
+                    onEditUser(getResponse.data); 
                 } else {
                     console.error('Failed to fetch updated user data');
                 }

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 interface NewUserFormProps {
     onAddUser: (newUser: any) => void;
 }
 
-const NewUserForm: React.FC<NewUserFormProps> = ({ onAddUser }: any) => {
+const NewUserForm: React.FC<NewUserFormProps> = ({ onAddUser }) => {
     const [newUser, setNewUser] = useState({
         name: '',
         email: '',
@@ -20,18 +21,12 @@ const NewUserForm: React.FC<NewUserFormProps> = ({ onAddUser }: any) => {
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         try {
-            const response = await fetch('https://cac5595b20d3087e583a.free.beeceptor.com/api/users/', {
-                method: 'POST',
+            const response = await axios.post('https://cac5595b20d3087e583a.free.beeceptor.com/api/users/', newUser, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(newUser),
             });
-            if (!response.ok) {
-                throw new Error('Failed to add new user.');
-            }
-            const data = await response.json();
-            onAddUser(data);
+            onAddUser(response.data);
             setNewUser({
                 name: '',
                 email: '',
