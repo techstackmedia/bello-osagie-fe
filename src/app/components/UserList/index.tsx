@@ -1,0 +1,133 @@
+import React, { useState } from 'react';
+import Image from 'next/image';
+import FilterButton from '../Filter';
+import EditUserModal from '../EditUserModal';
+import axios from 'axios';
+
+interface User {
+    id: string;
+    name: string;
+    email: string;
+    role: string;
+    roleColor: string;
+}
+
+interface UserListProps {
+    users: User[];
+    handleNewUserButtonClick: () => void;
+    onEditUser: (editedUser: User) => void;
+    onRemoveUser?: (userId: string) => void;
+    handleShowDelete: (user: User) => void;
+}
+
+
+const UserList: React.FC<UserListProps> = ({ users, onEditUser, onRemoveUser, handleShowDelete, handleNewUserButtonClick }: any) => {
+    const [showEditModal, setShowEditModal] = useState(false);
+    const [editingUser, setEditingUser] = useState<User | null>(null);
+
+    const handleEditClick = (user: User) => {
+        setEditingUser(user);
+        setShowEditModal(true);
+    };
+
+    const handleUpdateUser = async (updatedUser: User) => {
+        try {
+            const response = await axios.put(`https://ca50b917d87adfbe2d91.free.beeceptor.com/api/users/${updatedUser.id}`, updatedUser);
+
+            if (response.status === 200) {
+                onEditUser(updatedUser);
+                setShowEditModal(false);
+            } else {
+                console.error('Failed to update user');
+            }
+        } catch (error) {
+            console.error('Error updating user:', error);
+        }
+    };
+
+    const handleCancelEdit = () => {
+        setEditingUser(null);
+        setShowEditModal(false);
+    };
+
+    return (
+        <div className="overflow-x-auto ml-250 absolute w-[70%] left-[350px] top-[130px]">
+            <h1>Users & Roles</h1>
+            <p>Manage all users in your business</p>
+            <div className="min-w-full bg-white border rounded-lg shadow-sm">
+                <div className="flex justify-between items-center p-4">
+                    <div className="relative flex gap-4">
+                        <div className=''>
+                            <input
+                                type="text"
+                                placeholder="Search here..."
+                                className="pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            />
+                        </div>
+                        <Image src='/search.svg' width={24} height={24} alt='search icon' className='absolute left-2 top-2' />
+                        <FilterButton />
+                    </div>
+                    <button className="bg-blue-500 text-white px-4 py-2 rounded-lg flex gap-2 items-center" onClick={handleNewUserButtonClick}>
+                        <Image src='/add.png' alt='add icon' width={14} height={14} /> <span>New User</span>
+                    </button>
+                </div>
+                <table className="min-w-full divide-y divide-gray-200">
+                    <thead className="bg-gray-50">
+                        <tr>
+                            <th className="w-12 p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <input type="checkbox" className="form-checkbox" />
+                            </th>
+                            <th className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Name
+                            </th>
+                            <th className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Email Address
+                            </th>
+                            <th className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Role
+                            </th>
+                            <th className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Actions
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                        {users.map((user: User) => (
+                            <tr key={user.id}>
+                                <td className="p-4">
+                                    <input type="checkbox" className="form-checkbox" />
+                                </td>
+                                <td className="p-4 whitespace-nowrap">{user.name}</td>
+                                <td className="p-4 whitespace-nowrap">{user.email}</td>
+                                <td className="p-4 whitespace-nowrap">
+                                    <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-600` /* ${user.roleColor} */}>
+                                        {user.role}
+                                    </span>
+                                </td>
+                                <td className="p-4 whitespace-nowrap text-sm font-medium">
+                                    <button onClick={() => handleEditClick(user)}>
+                                        <span className="text-blue-600 hover:text-blue-900 w-10">Edit</span>
+                                    </button>
+                                    {'  '}&nbsp;&nbsp;&nbsp;
+                                    <button onClick={() => handleShowDelete(user)}>
+                                        <span className="text-red-600 hover:text-red-900">Delete</span>
+                                    </button>
+
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+            {showEditModal && editingUser && (
+                <EditUserModal
+                    user={editingUser}
+                    onUpdateUser={handleUpdateUser}
+                    onCancelEdit={handleCancelEdit}
+                />
+            )}
+        </div>
+    );
+};
+
+export default UserList;

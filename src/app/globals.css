@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
+body {
+  color: rgb(var(--foreground-rgb));
+    background: #F0F2F5;
+
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
