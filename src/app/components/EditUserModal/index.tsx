@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface EditUserModalProps {
     user: any;
@@ -6,7 +6,7 @@ interface EditUserModalProps {
     onCancelEdit: () => void;
 }
 
-const EditUserModal: React.FC<EditUserModalProps> = ({ user, onUpdateUser, onCancelEdit }: any) => {
+const EditUserModal: React.FC<EditUserModalProps> = ({ user, onUpdateUser, onCancelEdit }) => {
     const [editedUser, setEditedUser] = useState({
         name: user.name,
         email: user.email,
@@ -67,9 +67,9 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ user, onUpdateUser, onCan
                             onChange={handleInputChange}
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         >
-                            <option value="admin">Admin</option>
-                            <option value="user">User</option>
-                            <option value="guest">Guest</option>
+                            <option value="Adminstration">Adminstration</option>
+                            <option value="Sales Manage">Sales Manager</option>
+                            <option value="Sales Representative">Sales Representative</option>
                         </select>
                     </div>
                     <div className="flex justify-end">

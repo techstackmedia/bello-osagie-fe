@@ -14,7 +14,7 @@ const ConfirmationDialog: React.FC<ConfirmationDialogProps> = ({ onCancel, onCon
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
+    <div className="fixed inset-0 flex z-10 items-center justify-center bg-gray-800 bg-opacity-50">
       <div className="bg-white p-8 rounded-lg shadow-md w-96">
         <h2 className="text-xl font-bold mb-4">Delete this user</h2>
         <p className="text-gray-700 mb-6">

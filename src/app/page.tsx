@@ -51,7 +51,7 @@ export default function Home() {
   return (
     <>
       <UserList users={users} handleNewUserButtonClick={handleNewUserButtonClick} onEditUser={handleEditUser} onRemoveUser={handleRemoveUser} handleShowDelete={handleShowDelete} />
-      {showNewUserForm && <NewUserForm onAddUser={handleAddUser} />}
+      {showNewUserForm && <NewUserForm onCancel={() => setShowNewUserForm(false)} onAddUser={handleAddUser} />}
       {showDeleteConfirmation && <ConfirmationDialog onCancel={handleCancelDelete} onConfirm={handleConfirmDelete} userToDelete={userToDelete} onRemoveUser={handleRemoveUser} />}
     </>
   );

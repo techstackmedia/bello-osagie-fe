@@ -36,7 +36,7 @@ const UserList: React.FC<UserListProps> = ({ users, onEditUser, handleShowDelete
             if (response.status === 200) {
                 const getResponse = await axios.get(`https://cac5595b20d3087e583a.free.beeceptor.com/api/users/${updatedUser.id}`);
                 if (getResponse.status === 200) {
-                    onEditUser(getResponse.data); 
+                    onEditUser(getResponse.data);
                 } else {
                     console.error('Failed to fetch updated user data');
                 }
@@ -119,7 +119,7 @@ const UserList: React.FC<UserListProps> = ({ users, onEditUser, handleShowDelete
                                     </button>
                                     {'  '}&nbsp;&nbsp;&nbsp;
                                     <button onClick={() => handleShowDelete(user)}>
-                                        <span className="text-red-600 hover:text-red-900">Delete</span>
+                                        <span className="text-[#98A2B3] hover:text-[#F0F6FE]">Remove</span>
                                     </button>
                                 </td>
                             </tr>
