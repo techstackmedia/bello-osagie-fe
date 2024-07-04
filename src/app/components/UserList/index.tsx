@@ -54,6 +54,24 @@ const UserList: React.FC<UserListProps> = ({ users, onEditUser, handleShowDelete
         setShowEditModal(false);
     };
 
+    const getStylesForRole = (role: string) => {
+        switch (role) {
+          case 'Administration':
+            return { color: '#0D6EFD', backgroundColor: '#F0F6FE' };
+          case 'Sales Manager':
+            return { color: '#0F973D', backgroundColor: '#E7F6EC' };
+          case 'Sales Representative':
+            return { color: '#F58A07', backgroundColor: '#FEF4E6' };
+          default:
+            return { color: '#98A2B3', backgroundColor: '#FFFFFF' };
+        }
+      };
+    console.log(editingUser)
+    const handleRoleLabel = (role: any) => {
+        const { color, backgroundColor } = getStylesForRole(role);
+        return { color, backgroundColor }
+    };
+
     return (
         <div className="overflow-x-auto absolute w-[70%] left-[350px] top-[100px]">
             <p className='text-[#98A2B3] text-sm relative'>Settings / Users & Roles Setting</p>
@@ -109,7 +127,7 @@ const UserList: React.FC<UserListProps> = ({ users, onEditUser, handleShowDelete
                                 <td className="p-4 whitespace-nowrap">{user.name}</td>
                                 <td className="p-4 whitespace-nowrap">{user.email}</td>
                                 <td className="p-4 whitespace-nowrap">
-                                    <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-600` /* ${user.roleColor} */}>
+                                    <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-600`} style={handleRoleLabel(user.role)}>
                                         {user.role}
                                     </span>
                                 </td>
@@ -119,7 +137,7 @@ const UserList: React.FC<UserListProps> = ({ users, onEditUser, handleShowDelete
                                     </button>
                                     {'  '}&nbsp;&nbsp;&nbsp;
                                     <button onClick={() => handleShowDelete(user)}>
-                                        <span className="text-[#98A2B3] hover:text-[#F0F6FE]">Remove</span>
+                                        <span className="text-[#98A2B3] hover:text-[#CCCCCC]">Remove</span>
                                     </button>
                                 </td>
                             </tr>
