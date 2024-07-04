@@ -12,13 +12,13 @@ interface SidebarItem {
 }
 
 const sidebarItems: SidebarItem[] = [
-  { name: 'Account', href: '/account', icon: <i className="fas fa-user"></i> },
-  { name: 'Security', href: '/security', icon: <i className="fas fa-lock"></i> },
-  { name: 'Notifications', href: '/notifications', icon: <i className="fas fa-bell"></i> },
-  { name: 'Pricing', href: '/pricing', icon: <i className="fas fa-dollar-sign"></i> },
-  { name: 'Sales', href: '/sales', icon: <i className="fas fa-tags"></i> },
-  { name: 'Users & Roles', href: '/user', icon: <i className="fas fa-users"></i> },
-  { name: 'Backups', href: '/backups', icon: <i className="fas fa-cloud"></i> },
+  { name: 'Account', href: '/account', icon: <Image src='/user.svg' width={20} height={20} alt='account icon' /> },
+  { name: 'Security', href: '/security', icon: <Image src='/security.svg' width={20} height={20} alt='account icon' /> },
+  { name: 'Notifications', href: '/notifications', icon: <Image src='/notification.svg' width={20} height={20} alt='account icon' />  },
+  { name: 'Pricing', href: '/pricing', icon: <Image src='/pricing.svg' width={20} height={20} alt='account icon' />  },
+  { name: 'Sales', href: '/sales', icon: <Image src='/sales.svg' width={20} height={20} alt='account icon' />  },
+  { name: 'Users & Roles', href: '/user', icon: <Image src='/users.svg' width={20} height={20} alt='account icon' />  },
+  { name: 'Backups', href: '/backups', icon: <Image src='/backups.svg' width={20} height={20} alt='account icon' />  },
 ];
 
 const Sidebar: FC = () => {
