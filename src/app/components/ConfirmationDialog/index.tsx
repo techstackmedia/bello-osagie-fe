@@ -17,7 +17,7 @@ const ConfirmationDialog: React.FC<ConfirmationDialogProps> = ({ onCancel, onCon
     <div className="fixed inset-0 flex z-10 items-center justify-center bg-gray-800 bg-opacity-50">
       <div className="bg-white p-8 rounded-lg shadow-md w-96">
         <h2 className="text-xl font-bold mb-4">Delete this user</h2>
-        <p className="text-gray-700 mb-6">
+        <p className="mb-6 text-center text-[#667185] text-sm">
           This user and all associated data will be permanently removed. Do you wish to continue?
         </p>
         <div className="flex justify-end space-x-4">
