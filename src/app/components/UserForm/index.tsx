@@ -1,4 +1,3 @@
-// src/app/components/UserForm/index.tsx
 import React, { useState } from 'react';
 import axios from 'axios';
 import Select from '../Select';
