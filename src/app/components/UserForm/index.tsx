@@ -27,7 +27,7 @@ const UserForm: React.FC<UserFormProps> = ({ onAddUser, onCancel }) => {
     event.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post('https://cac5595b20d3087e583a.free.beeceptor.com/api/users/', newUser, {
+      const response = await axios.post('https://cab3439dc88a2dfee313.free.beeceptor.com/api/users/', newUser, {
         headers: {
           'Content-Type': 'application/json',
         },
