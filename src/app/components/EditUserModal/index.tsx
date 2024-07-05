@@ -1,12 +1,7 @@
 import Image from 'next/image';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Select from '../Select';
-
-interface EditUserModalProps {
-    user: any;
-    onUpdateUser: (updatedUser: any) => void;
-    onCancelEdit: () => void;
-}
+import { EditUserModalProps } from './interface';
 
 const EditUserModal: React.FC<EditUserModalProps> = ({ user, onUpdateUser, onCancelEdit }) => {
     const [editedUser, setEditedUser] = useState({

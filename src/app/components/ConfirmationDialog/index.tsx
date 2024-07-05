@@ -1,12 +1,5 @@
 import Image from 'next/image';
-import React from 'react';
-
-interface ConfirmationDialogProps {
-  onCancel: () => void;
-  onConfirm: () => void;
-  userToDelete: any;
-  onRemoveUser: (email: string) => void;
-}
+import ConfirmationDialogProps from './interface';
 
 const ConfirmationDialog: React.FC<ConfirmationDialogProps> = ({ onCancel, onConfirm, userToDelete, onRemoveUser }) => {
   const handleConfirmDelete = () => {

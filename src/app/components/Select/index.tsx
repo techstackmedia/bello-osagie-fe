@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-
-interface SelectProps {
-  options: string[];
-  value: string;
-  onChange: (value: string) => void;
-}
+import SelectProps from './interface';
 
 const Select: React.FC<SelectProps> = ({ options, value, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);

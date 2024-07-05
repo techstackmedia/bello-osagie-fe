@@ -3,22 +3,7 @@ import Image from 'next/image';
 import FilterButton from '../Filter';
 import EditUserModal from '../EditUserModal';
 import axios from 'axios';
-
-interface User {
-    id: string;
-    name: string;
-    email: string;
-    role: string;
-    roleColor: string;
-}
-
-interface UserListProps {
-    users: User[];
-    handleNewUserButtonClick: () => void;
-    onEditUser: (editedUser: User) => void;
-    onRemoveUser?: (userId: string) => void;
-    handleShowDelete: (user: User) => void;
-}
+import { User, UserListProps } from './interface';
 
 const UserList: React.FC<UserListProps> = ({ users, onEditUser, handleShowDelete, handleNewUserButtonClick }: any) => {
     const [showEditModal, setShowEditModal] = useState(false);

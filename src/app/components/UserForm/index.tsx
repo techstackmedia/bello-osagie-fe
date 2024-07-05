@@ -2,11 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Select from '../Select';
 import Image from 'next/image';
-
-interface NewUserFormProps {
-  onAddUser: (newUser: any) => void;
-  onCancel?: () => void;
-}
+import { NewUserFormProps } from './interface';
 
 const NewUserForm: React.FC<NewUserFormProps> = ({ onAddUser, onCancel }) => {
   const [newUser, setNewUser] = useState({

@@ -5,12 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import styles from './index.module.css';
-
-interface SidebarItem {
-  name: string;
-  href: string;
-  iconSrc: string;
-}
+import SidebarItem from './interface';
 
 const sidebarItems: SidebarItem[] = [
   { name: 'Account', href: '/account', iconSrc: '/user.svg' },
