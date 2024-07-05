@@ -26,19 +26,19 @@ const NavBar = () => {
               <span>Notifications</span>
             </button>
             <button className="text-gray-500 hover:text-gray-700 flex flex-col items-center">
-            <Image src="/wallet.svg" alt='alart' width={24} height={24} />
-            <span>Wallet</span>
+              <Image src="/wallet.svg" alt='alart' width={24} height={24} />
+              <span>Wallet</span>
             </button>
             <button className="text-gray-500 hover:text-gray-700 flex flex-col items-center">
-            <Image src="/question.svg" alt='question' width={24} height={24} />
-            <span>Inquiries</span>
+              <Image src="/question.svg" alt='question' width={24} height={24} />
+              <span>Inquiries</span>
             </button>
             <button className="text-gray-500 hover:text-gray-700 flex flex-col items-center">
-            <Image src="/setting.svg" alt='question' width={24} height={24} />
-            <span>Settings</span>
+              <Image src="/setting.svg" alt='question' width={24} height={24} />
+              <span>Settings</span>
             </button>
             <img className="h-8 w-8 rounded-full" src="/profile.png" alt="User" />
-            <Image src="/dropdown.svg" alt='question' width={24} height={24}  className='w-[24px] h-[24px]' />
+            <Image src="/dropdown.svg" alt='question' width={24} height={24} className='w-[24px] h-[24px]' />
           </div>
         </div>
       </div>

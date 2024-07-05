@@ -5,13 +5,13 @@ interface ConfirmationDialogProps {
   onCancel: () => void;
   onConfirm: () => void;
   userToDelete: any;
-  onRemoveUser: (email: string) => void; 
+  onRemoveUser: (email: string) => void;
 }
 
 const ConfirmationDialog: React.FC<ConfirmationDialogProps> = ({ onCancel, onConfirm, userToDelete, onRemoveUser }) => {
   const handleConfirmDelete = () => {
     onRemoveUser(userToDelete.email);
-    onConfirm(); 
+    onConfirm();
   };
 
   return (
@@ -31,7 +31,7 @@ const ConfirmationDialog: React.FC<ConfirmationDialogProps> = ({ onCancel, onCon
           <button
             onClick={handleConfirmDelete}
             className="bg-[#EB9B9890] hover:bg-red-700 text-[#D42620] border border-[#D42620] font-semibold py-2 px-4 gap-1 rounded focus:outline-none focus:shadow-outline flex items-center"
-          > 
+          >
             <Image src='/delete.svg' alt='delete icon' width={20} height={20} />
             Yes, Delete
           </button>

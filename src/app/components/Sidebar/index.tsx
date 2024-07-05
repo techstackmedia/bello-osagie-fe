@@ -1,24 +1,25 @@
-"use client";
+'use client';
 
 import { FC } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
+import styles from './index.module.css';
 
 interface SidebarItem {
   name: string;
   href: string;
-  icon: JSX.Element;
+  iconSrc: string;
 }
 
 const sidebarItems: SidebarItem[] = [
-  { name: 'Account', href: '/account', icon: <Image src='/user.svg' width={20} height={20} alt='account icon' /> },
-  { name: 'Security', href: '/security', icon: <Image src='/security.svg' width={20} height={20} alt='account icon' /> },
-  { name: 'Notifications', href: '/notifications', icon: <Image src='/notification.svg' width={20} height={20} alt='account icon' />  },
-  { name: 'Pricing', href: '/pricing', icon: <Image src='/pricing.svg' width={20} height={20} alt='account icon' />  },
-  { name: 'Sales', href: '/sales', icon: <Image src='/sales.svg' width={20} height={20} alt='account icon' />  },
-  { name: 'Users & Roles', href: '/user', icon: <Image src='/users.svg' width={20} height={20} alt='account icon' />  },
-  { name: 'Backups', href: '/backups', icon: <Image src='/backups.svg' width={20} height={20} alt='account icon' />  },
+  { name: 'Account', href: '/account', iconSrc: '/user.svg' },
+  { name: 'Security', href: '/security', iconSrc: '/security.svg' },
+  { name: 'Notifications', href: '/notifications', iconSrc: '/notification.svg' },
+  { name: 'Pricing', href: '/pricing', iconSrc: '/pricing.svg' },
+  { name: 'Sales', href: '/sales', iconSrc: '/sales.svg' },
+  { name: 'Users & Roles', href: '/' || '/user', iconSrc: '/users.svg' },
+  { name: 'Backups', href: '/backups', iconSrc: '/backups.svg' },
 ];
 
 const Sidebar: FC = () => {
@@ -34,11 +35,16 @@ const Sidebar: FC = () => {
               {sidebarItems.map((item) => (
                 <li key={item.name}>
                   <Link href={item.href}>
-                    <span className={`flex items-center p-2 rounded-lg ${
-                      pathname === item.href ? 'bg-blue-100 text-blue-600' : 'text-[#94A3B8]'
-                    } hover:bg-blue-50`}>
-                      <span className="mr-3">{item.icon}</span>
-                      {item.name}
+                    <span className={`flex items-center p-2 rounded-lg ${pathname === item.href ? 'bg-blue-100 text-[#0D6EFD]' : 'text-[#94A3B8]'
+                      } hover:bg-blue-50`}>
+                      <Image
+                        src={item.iconSrc}
+                        width={20}
+                        height={20}
+                        alt={`${item.name.toLowerCase()} icon`}
+                        className={pathname === item.href ? styles.activeIcon : styles.icon}
+                      />
+                      <span className="ml-3">{item.name}</span>
                     </span>
                   </Link>
                 </li>
@@ -48,7 +54,7 @@ const Sidebar: FC = () => {
         </div>
         <div className="mt-8 mb-10">
           <Link href="/dashboard">
-            <span className="flex gap-4 items-center p-2  text-gray-600 hover:bg-blue-50  rounded border-[#344054] border">
+            <span className="flex gap-4 items-center p-2 text-gray-600 hover:bg-blue-50 rounded border-[#344054] border">
               <Image src='/signOut.svg' width={20} height={20} alt='sign out icon' />
               <span className='text-[#344054]'>Back to Dashboard</span>
             </span>

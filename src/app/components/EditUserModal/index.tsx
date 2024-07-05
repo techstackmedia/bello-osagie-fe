@@ -34,7 +34,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ user, onUpdateUser, onCan
     return (
         <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
             <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full relative">
-            <Image src='/cancel.svg' alt='Cancel' width={27} height={27} onClick={onCancelEdit} className='absolute top-4 right-4 cursor-pointer' />
+                <Image src='/cancel.svg' alt='Cancel' width={27} height={27} onClick={onCancelEdit} className='absolute top-4 right-4 cursor-pointer' />
                 <div className="flex justify-center mb-6">
                     <div className="h-16 w-16 rounded-full bg-blue-100 flex items-center justify-center">
                         <Image src='/profile.svg' alt='User' width={32} height={32} />

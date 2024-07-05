@@ -56,16 +56,16 @@ const UserList: React.FC<UserListProps> = ({ users, onEditUser, handleShowDelete
 
     const getStylesForRole = (role: string) => {
         switch (role) {
-          case 'Administration':
-            return { color: '#0D6EFD', backgroundColor: '#F0F6FE' };
-          case 'Sales Manager':
-            return { color: '#0F973D', backgroundColor: '#E7F6EC' };
-          case 'Sales Representative':
-            return { color: '#F58A07', backgroundColor: '#FEF4E6' };
-          default:
-            return { color: '#98A2B3', backgroundColor: '#FFFFFF' };
+            case 'Administration':
+                return { color: '#0D6EFD', backgroundColor: '#F0F6FE' };
+            case 'Sales Manager':
+                return { color: '#0F973D', backgroundColor: '#E7F6EC' };
+            case 'Sales Representative':
+                return { color: '#F58A07', backgroundColor: '#FEF4E6' };
+            default:
+                return { color: '#98A2B3', backgroundColor: '#FFFFFF' };
         }
-      };
+    };
     const handleRoleLabel = (role: any) => {
         const { color, backgroundColor } = getStylesForRole(role);
         return { color, backgroundColor }

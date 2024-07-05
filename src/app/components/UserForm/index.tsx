@@ -60,7 +60,7 @@ const NewUserForm: React.FC<NewUserFormProps> = ({ onAddUser, onCancel }) => {
         className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md w-[588px] relative"
         onClick={(e) => e.stopPropagation()}
       >
-                    <Image src='/cancel.svg' alt='Cancel' width={27} height={27} onClick={onCancel} className='absolute top-4 right-4 cursor-pointer' />
+        <Image src='/cancel.svg' alt='Cancel' width={27} height={27} onClick={onCancel} className='absolute top-4 right-4 cursor-pointer' />
 
         <div className="flex justify-center mb-6">
           <div className="h-16 w-16 rounded-full bg-blue-100 flex items-center justify-center">
