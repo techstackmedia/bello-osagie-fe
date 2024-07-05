@@ -19,7 +19,7 @@ const Select: React.FC<SelectProps> = ({ options, value, onChange }) => {
         {value || "Select Role"}
       </button>
       {isOpen && (
-        <div className="absolute mt-1 w-full bg-white border rounded shadow-lg">
+        <div className="absolute mt-1 w-full bg-white z-10 border rounded shadow-lg">
           {options.map((option, index) => (
             <div
               key={index}
