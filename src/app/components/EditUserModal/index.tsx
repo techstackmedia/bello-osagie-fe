@@ -94,16 +94,9 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ user, onUpdateUser, onCan
                     <div className="flex justify-end">
                         <button
                             type="submit"
-                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2"
+                            className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2"
                         >
-                            Save
-                        </button>
-                        <button
-                            type="button"
-                            onClick={onCancelEdit}
-                            className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                        >
-                            Cancel
+                            Update User
                         </button>
                     </div>
                 </form>
