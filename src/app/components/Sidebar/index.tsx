@@ -51,8 +51,9 @@ const Sidebar: FC = () => {
               ))}
             </ul>
           </nav>
+          <div className='border-[#F0F2F5] border-b-2 w-full relative mt-6' />
         </div>
-        <div className="mt-8 mb-10">
+        <div>
           <Link href="/dashboard">
             <span className="flex gap-4 items-center p-2 text-gray-600 hover:bg-blue-50 rounded border-[#344054] border">
               <Image src='/signOut.svg' width={20} height={20} alt='sign out icon' />
