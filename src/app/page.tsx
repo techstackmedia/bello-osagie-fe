@@ -1,23 +1,23 @@
 'use client'
 import React, { useState } from 'react';
 import UserList from './components/UserList';
-import NewUserForm from './components/UserForm';
+import UserForm from './components/UserForm';
 import ConfirmationDialog from './components/ConfirmationDialog';
 
 export default function Home() {
-  const [showNewUserForm, setShowNewUserForm] = useState(false);
+  const [showUserForm, setShowUserForm] = useState(false);
   const [userToDelete, setUserToDelete] = useState<any>(null);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 
   const [users, setUsers] = useState<any>([]);
 
   const handleNewUserButtonClick = () => {
-    setShowNewUserForm(true);
+    setShowUserForm(true);
   };
 
   const handleAddUser = (newUser: any) => {
     setUsers([...users, newUser]);
-    setShowNewUserForm(false);
+    setShowUserForm(false);
   };
 
   const handleEditUser = (editedUser: any) => {
@@ -51,7 +51,7 @@ export default function Home() {
   return (
     <>
       <UserList users={users} handleNewUserButtonClick={handleNewUserButtonClick} onEditUser={handleEditUser} onRemoveUser={handleRemoveUser} handleShowDelete={handleShowDelete} />
-      {showNewUserForm && <NewUserForm onCancel={() => setShowNewUserForm(false)} onAddUser={handleAddUser} />}
+      {showUserForm && <UserForm onCancel={() => setShowUserForm(false)} onAddUser={handleAddUser} />}
       {showDeleteConfirmation && <ConfirmationDialog onCancel={handleCancelDelete} onConfirm={handleConfirmDelete} userToDelete={userToDelete} onRemoveUser={handleRemoveUser} />}
     </>
   );

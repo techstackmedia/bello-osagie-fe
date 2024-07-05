@@ -1,16 +1,12 @@
-import Image from 'next/image';
 import React, { useState } from 'react';
+import Image from 'next/image';
+import LoadingSpinner from '../LoadingSpinner';
 import Select from '../Select';
 import { EditUserModalProps } from './interface';
 
 const EditUserModal: React.FC<EditUserModalProps> = ({ user, onUpdateUser, onCancelEdit }) => {
-    const [editedUser, setEditedUser] = useState({
-        name: user.name,
-        email: user.email,
-        role: user.role,
-        roleColor: user.roleColor,
-        id: user.id,
-    });
+    const [editedUser, setEditedUser] = useState({ ...user });
+    const [loading, setLoading] = useState(false);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
@@ -21,9 +17,11 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ user, onUpdateUser, onCan
         setEditedUser({ ...editedUser, role });
     };
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        setLoading(true);
         onUpdateUser(editedUser);
+        setLoading(false);
     };
 
     return (
@@ -36,65 +34,69 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ user, onUpdateUser, onCan
                     </div>
                 </div>
                 <h2 className="text-2xl font-bold mb-4">Edit User</h2>
-                <form onSubmit={handleSubmit}>
-                    <div className="mb-4">
-                        <label className="block text-[#475367] text-sm mb-2" htmlFor="name">
-                            Name
-                        </label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            value={editedUser.name}
-                            onChange={handleInputChange}
-                            className="border rounded w-full py-3 text-sm px-3 text-[#475367] leading-tight focus:outline-none focus:shadow-outline"
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-[#475367] text-sm mb-2" htmlFor="email">
-                            Email Address
-                        </label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={editedUser.email}
-                            onChange={handleInputChange}
-                            className="border rounded w-full py-3 text-sm px-3 text-[#475367] leading-tight focus:outline-none focus:shadow-outline"
-                        />
-                    </div>
-                    <div className="mb-4 relative">
-                        <label className="block text-[#475367] text-sm mb-2" htmlFor="role">
-                            Role
-                        </label>
-                        <Select
-                            options={["Administration", "Sales Manager", "Sales Representative"]}
-                            value={editedUser.role}
-                            onChange={handleRoleChange}
-                        />
-                        <Image src='/select-dropdown.svg' alt='eye' width={20} height={20} className='absolute right-2 top-10' />
-                    </div>
-                    <div className="mb-6 relative">
-                        <label className="block text-[#475367] text-sm mb-2" htmlFor="password">
-                            Create Password
-                        </label>
-                        <input
-                            id="password"
-                            type="password"
-                            placeholder="Create a Password for New User"
-                            className="border rounded w-full py-3 text-sm px-3 text-[#475367] leading-tight focus:outline-none focus:shadow-outline"
-                        />
-                        <Image src='/eye.svg' alt='eye' width={20} height={20} className='absolute right-2 top-10' />
-                    </div>
-                    <div className="flex justify-end">
-                        <button
-                            type="submit"
-                            className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2"
-                        >
-                            Update User
-                        </button>
-                    </div>
-                </form>
+                {loading ? (
+                    <LoadingSpinner />
+                ) : (
+                    <form onSubmit={handleSubmit}>
+                        <div className="mb-4">
+                            <label className="block text-[#475367] text-sm mb-2" htmlFor="name">
+                                Name
+                            </label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                value={editedUser.name}
+                                onChange={handleInputChange}
+                                className="border rounded w-full py-3 text-sm px-3 text-[#475367] leading-tight focus:outline-none focus:shadow-outline"
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <label className="block text-[#475367] text-sm mb-2" htmlFor="email">
+                                Email Address
+                            </label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                value={editedUser.email}
+                                onChange={handleInputChange}
+                                className="border rounded w-full py-3 text-sm px-3 text-[#475367] leading-tight focus:outline-none focus:shadow-outline"
+                            />
+                        </div>
+                        <div className="mb-4 relative">
+                            <label className="block text-[#475367] text-sm mb-2" htmlFor="role">
+                                Role
+                            </label>
+                            <Select
+                                options={["Administration", "Sales Manager", "Sales Representative"]}
+                                value={editedUser.role}
+                                onChange={handleRoleChange}
+                            />
+                            <Image src='/select-dropdown.svg' alt='eye' width={20} height={20} className='absolute right-2 top-10' />
+                        </div>
+                        <div className="mb-6 relative">
+                            <label className="block text-[#475367] text-sm mb-2" htmlFor="password">
+                                Create Password
+                            </label>
+                            <input
+                                id="password"
+                                type="password"
+                                placeholder="Create a Password for New User"
+                                className="border rounded w-full py-3 text-sm px-3 text-[#475367] leading-tight focus:outline-none focus:shadow-outline"
+                            />
+                            <Image src='/eye.svg' alt='eye' width={20} height={20} className='absolute right-2 top-10' />
+                        </div>
+                        <div className="flex justify-end">
+                            <button
+                                type="submit"
+                                className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2"
+                            >
+                                Update User
+                            </button>
+                        </div>
+                    </form>
+                )}
             </div>
         </div>
     );

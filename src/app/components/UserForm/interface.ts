@@ -1,8 +1,8 @@
 import { User } from "../UserList/interface";
 
-interface NewUserFormProps {
+interface UserFormProps {
     onAddUser: (newUser: User) => void;
     onCancel?: () => void;
 }
 
-export type { NewUserFormProps };
+export type { UserFormProps };
