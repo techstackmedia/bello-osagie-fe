@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Select from '../Select';
+import Image from 'next/image';
 
 interface NewUserFormProps {
   onAddUser: (newUser: any) => void;
@@ -14,9 +16,13 @@ const NewUserForm: React.FC<NewUserFormProps> = ({ onAddUser, onCancel }) => {
     roleColor: '',
   });
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setNewUser({ ...newUser, [name]: value });
+  };
+
+  const handleRoleChange = (role: string) => {
+    setNewUser({ ...newUser, role });
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -56,15 +62,13 @@ const NewUserForm: React.FC<NewUserFormProps> = ({ onAddUser, onCancel }) => {
       >
         <div className="flex justify-center mb-6">
           <div className="h-16 w-16 rounded-full bg-blue-100 flex items-center justify-center">
-            <svg className="w-8 h-8" fill="none" stroke='currentColor' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4a4 4 0 100 8 4 4 0 000-8zM6.5 18a9.5 9.5 0 0113 0M6 14h.01M18 14h.01"></path>
-            </svg>
+            <Image src='/profile.svg' alt='User' width={32} height={32} />
           </div>
         </div>
         <h2 className="text-center text-2xl font-bold mb-6">New User</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+            <label className="block text-[#475367] text-sm mb-2" htmlFor="email">
               Email Address
             </label>
             <input
@@ -74,11 +78,11 @@ const NewUserForm: React.FC<NewUserFormProps> = ({ onAddUser, onCancel }) => {
               value={newUser.email}
               onChange={handleInputChange}
               placeholder="New User's Email Address"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="border rounded w-full py-3 text-sm px-3 text-[#475367] leading-tight focus:outline-none focus:shadow-outline"
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+            <label className="block text-[#475367] text-sm mb-2" htmlFor="name">
               Full Name
             </label>
             <input
@@ -87,35 +91,28 @@ const NewUserForm: React.FC<NewUserFormProps> = ({ onAddUser, onCancel }) => {
               value={newUser.name}
               onChange={handleInputChange}
               placeholder="Full Name"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="border rounded w-full py-3 text-sm px-3 text-[#475367] leading-tight focus:outline-none focus:shadow-outline"
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="role">
+            <label className="block text-[#475367] text-sm mb-2" htmlFor="role">
               Role
             </label>
-            <select
-              id="role"
-              name="role"
+            <Select
+              options={["Administration", "Sales Manager", "Sales Representative"]}
               value={newUser.role}
-              onChange={handleInputChange}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            >
-              <option value="">Select Role</option>
-              <option value="Administration">Administration</option>
-              <option value="Sales Manager">Sales Manager</option>
-              <option value="Sales Representative">Sales Representative</option>
-            </select>
+              onChange={handleRoleChange}
+            />
           </div>
           <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+            <label className="block text-[#475367] text-sm mb-2" htmlFor="password">
               Create Password
             </label>
             <input
               id="password"
               type="password"
               placeholder="Create a Password for New User"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="border rounded w-full py-3 text-sm px-3 text-[#475367] leading-tight focus:outline-none focus:shadow-outline"
             />
           </div>
           <div className="flex items-center justify-center">

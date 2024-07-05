@@ -1,9 +1,12 @@
+import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
+import Select from '../Select';
 
 interface EditUserModalProps {
     user: any;
     onUpdateUser: (updatedUser: any) => void;
     onCancelEdit: () => void;
+    onCancel: () => void;
 }
 
 const EditUserModal: React.FC<EditUserModalProps> = ({ user, onUpdateUser, onCancelEdit }) => {
@@ -15,9 +18,13 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ user, onUpdateUser, onCan
         id: user.id,
     });
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         setEditedUser({ ...editedUser, [name]: value });
+    };
+
+    const handleRoleChange = (role: string) => {
+        setEditedUser({ ...editedUser, role });
     };
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -28,10 +35,15 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ user, onUpdateUser, onCan
     return (
         <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
             <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+                <div className="flex justify-center mb-6">
+                    <div className="h-16 w-16 rounded-full bg-blue-100 flex items-center justify-center">
+                        <Image src='/profile.svg' alt='User' width={32} height={32} />
+                    </div>
+                </div>
                 <h2 className="text-2xl font-bold mb-4">Edit User</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+                        <label className="block text-[#475367] text-sm mb-2" htmlFor="name">
                             Name
                         </label>
                         <input
@@ -40,11 +52,11 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ user, onUpdateUser, onCan
                             name="name"
                             value={editedUser.name}
                             onChange={handleInputChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="border rounded w-full py-3 text-sm px-3 text-[#475367] leading-tight focus:outline-none focus:shadow-outline"
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+                        <label className="block text-[#475367] text-sm mb-2" htmlFor="email">
                             Email Address
                         </label>
                         <input
@@ -53,24 +65,18 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ user, onUpdateUser, onCan
                             name="email"
                             value={editedUser.email}
                             onChange={handleInputChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="border rounded w-full py-3 text-sm px-3 text-[#475367] leading-tight focus:outline-none focus:shadow-outline"
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="role">
+                        <label className="block text-[#475367] text-sm mb-2" htmlFor="role">
                             Role
                         </label>
-                        <select
-                            id="role"
-                            name="role"
+                        <Select
+                            options={["Administration", "Sales Manager", "Sales Representative"]}
                             value={editedUser.role}
-                            onChange={handleInputChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        >
-                            <option value="Adminstration">Adminstration</option>
-                            <option value="Sales Manage">Sales Manager</option>
-                            <option value="Sales Representative">Sales Representative</option>
-                        </select>
+                            onChange={handleRoleChange}
+                        />
                     </div>
                     <div className="flex justify-end">
                         <button
