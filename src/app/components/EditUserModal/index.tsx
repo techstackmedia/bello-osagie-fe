@@ -33,7 +33,8 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ user, onUpdateUser, onCan
 
     return (
         <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
-            <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+            <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full relative">
+            <Image src='/cancel.svg' alt='Cancel' width={27} height={27} onClick={onCancelEdit} className='absolute top-4 right-4 cursor-pointer' />
                 <div className="flex justify-center mb-6">
                     <div className="h-16 w-16 rounded-full bg-blue-100 flex items-center justify-center">
                         <Image src='/profile.svg' alt='User' width={32} height={32} />
@@ -67,7 +68,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ user, onUpdateUser, onCan
                             className="border rounded w-full py-3 text-sm px-3 text-[#475367] leading-tight focus:outline-none focus:shadow-outline"
                         />
                     </div>
-                    <div className="mb-4">
+                    <div className="mb-4 relative">
                         <label className="block text-[#475367] text-sm mb-2" htmlFor="role">
                             Role
                         </label>
@@ -76,6 +77,19 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ user, onUpdateUser, onCan
                             value={editedUser.role}
                             onChange={handleRoleChange}
                         />
+                        <Image src='/select-dropdown.svg' alt='eye' width={20} height={20} className='absolute right-2 top-10' />
+                    </div>
+                    <div className="mb-6 relative">
+                        <label className="block text-[#475367] text-sm mb-2" htmlFor="password">
+                            Create Password
+                        </label>
+                        <input
+                            id="password"
+                            type="password"
+                            placeholder="Create a Password for New User"
+                            className="border rounded w-full py-3 text-sm px-3 text-[#475367] leading-tight focus:outline-none focus:shadow-outline"
+                        />
+                        <Image src='/eye.svg' alt='eye' width={20} height={20} className='absolute right-2 top-10' />
                     </div>
                     <div className="flex justify-end">
                         <button

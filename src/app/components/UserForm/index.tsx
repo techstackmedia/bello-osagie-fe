@@ -57,9 +57,11 @@ const NewUserForm: React.FC<NewUserFormProps> = ({ onAddUser, onCancel }) => {
       onClick={handleOverlayClick}
     >
       <div
-        className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md w-[588px]"
+        className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md w-[588px] relative"
         onClick={(e) => e.stopPropagation()}
       >
+                    <Image src='/cancel.svg' alt='Cancel' width={27} height={27} onClick={onCancel} className='absolute top-4 right-4 cursor-pointer' />
+
         <div className="flex justify-center mb-6">
           <div className="h-16 w-16 rounded-full bg-blue-100 flex items-center justify-center">
             <Image src='/profile.svg' alt='User' width={32} height={32} />
@@ -94,7 +96,7 @@ const NewUserForm: React.FC<NewUserFormProps> = ({ onAddUser, onCancel }) => {
               className="border rounded w-full py-3 text-sm px-3 text-[#475367] leading-tight focus:outline-none focus:shadow-outline"
             />
           </div>
-          <div className="mb-4">
+          <div className="mb-4 relative">
             <label className="block text-[#475367] text-sm mb-2" htmlFor="role">
               Role
             </label>
@@ -103,8 +105,9 @@ const NewUserForm: React.FC<NewUserFormProps> = ({ onAddUser, onCancel }) => {
               value={newUser.role}
               onChange={handleRoleChange}
             />
+            <Image src='/select-dropdown.svg' alt='eye' width={20} height={20} className='absolute right-2 top-10' />
           </div>
-          <div className="mb-6">
+          <div className="mb-6 relative">
             <label className="block text-[#475367] text-sm mb-2" htmlFor="password">
               Create Password
             </label>
@@ -114,6 +117,7 @@ const NewUserForm: React.FC<NewUserFormProps> = ({ onAddUser, onCancel }) => {
               placeholder="Create a Password for New User"
               className="border rounded w-full py-3 text-sm px-3 text-[#475367] leading-tight focus:outline-none focus:shadow-outline"
             />
+            <Image src='/eye.svg' alt='eye' width={20} height={20} className='absolute right-2 top-10' />
           </div>
           <div className="flex items-center justify-center">
             <button
