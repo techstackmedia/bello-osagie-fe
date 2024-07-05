@@ -6,7 +6,6 @@ interface EditUserModalProps {
     user: any;
     onUpdateUser: (updatedUser: any) => void;
     onCancelEdit: () => void;
-    onCancel: () => void;
 }
 
 const EditUserModal: React.FC<EditUserModalProps> = ({ user, onUpdateUser, onCancelEdit }) => {

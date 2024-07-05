@@ -66,6 +66,7 @@ const UserList: React.FC<UserListProps> = ({ users, onEditUser, handleShowDelete
             return { color: '#98A2B3', backgroundColor: '#FFFFFF' };
         }
       };
+    console.log(editingUser)
     const handleRoleLabel = (role: any) => {
         const { color, backgroundColor } = getStylesForRole(role);
         return { color, backgroundColor }
