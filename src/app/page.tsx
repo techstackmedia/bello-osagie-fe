@@ -21,7 +21,7 @@ export default function Home() {
   const fetchUsers = async () => {
     setLoading(true);
     try {
-      const response = axios.get('https://cafa000f843e2f4e9b1c.free.beeceptor.com/api/users/')
+      const response = axios.get('https://caf58c5c7aba97e698b6.free.beeceptor.com/api/users/')
       setUsers((await response).data);
       setLoading(false);
     } catch (error) {

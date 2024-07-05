@@ -3,15 +3,27 @@ import Image from 'next/image';
 import LoadingSpinner from '../LoadingSpinner';
 import ConfirmationDialogProps from './interface';
 import styles from './index.module.css';
+import axios from 'axios';
 
 const ConfirmationDialog: React.FC<ConfirmationDialogProps> = ({ onCancel, onConfirm, userToDelete, onRemoveUser }) => {
   const [loading, setLoading] = useState(false);
 
-  const handleConfirmDelete = () => {
-    setLoading(true);
-    onRemoveUser(userToDelete.email);
-    setLoading(false);
-    onConfirm();
+  const handleConfirmDelete = async () => {
+    if (userToDelete) {
+      try {
+        const response = await axios.delete(`https://caf58c5c7aba97e698b6.free.beeceptor.com/api/users/${userToDelete.id}`);
+        if (response.status === 200) {
+          setLoading(true);
+          onRemoveUser(userToDelete.email);
+          setLoading(false);
+          onConfirm();
+        } else {
+          console.error('Failed to delete user');
+        }
+      } catch (error) {
+        console.error('Error deleting user:', error);
+      }
+    }
   };
 
   return (
