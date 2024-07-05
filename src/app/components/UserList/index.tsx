@@ -16,10 +16,10 @@ const UserList: React.FC<UserListProps> = ({ users, onEditUser, handleShowDelete
 
     const handleUpdateUser = async (updatedUser: User) => {
         try {
-            const response = await axios.put(`https://cab3439dc88a2dfee313.free.beeceptor.com/api/users/${updatedUser.id}`, updatedUser);
+            const response = await axios.put(`https://cafa000f843e2f4e9b1c.free.beeceptor.com/api/users/${updatedUser.id}`, updatedUser);
 
             if (response.status === 200) {
-                const getResponse = await axios.get(`https://cab3439dc88a2dfee313.free.beeceptor.com/api/users/${updatedUser.id}`);
+                const getResponse = await axios.get(`https://cafa000f843e2f4e9b1c.free.beeceptor.com/api/users/${updatedUser.id}`);
                 if (getResponse.status === 200) {
                     onEditUser(getResponse.data);
                 } else {
